@@ -3,7 +3,7 @@ import {View, Text,StyleSheet} from 'react-native';
 
 const SignIn = (props)=>{
     return (
-        <View>
+        <View >
             <Text> Sign In Screen </Text>
         </View>
     );
@@ -12,7 +12,7 @@ const SignIn = (props)=>{
 
 
 const styles = StyleSheet.create({
-    
+  
 });
 
 export default SignIn;
