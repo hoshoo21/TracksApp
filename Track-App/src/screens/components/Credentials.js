@@ -42,8 +42,13 @@ const Credentials =(props)=>{
                             />
                     
                     <Spacer/>
+                   
+                    {props.errorMessage ? <Text style={styles.errorMessageContainer}> {props.errorMessage} </Text>: null}
+                    
                     <Spacer >
-                        <Button title = "Signup" />
+                        <Button title = "Signup" 
+                            onPress={()=>{props.onSubmit({email:email,password:password});}}
+                        />
                     </Spacer> 
                 </ScrollView>
                 </TouchableWithoutFeedback> 
@@ -61,6 +66,13 @@ const styles = StyleSheet.create({
         paddingTop: 150,
         justifyContent: 'center',
         marginBottom:200,
+    },
+    errorMessageContainer : {
+        fontSize:16,
+        color : "red",
+        marginleft:50,
+        marginTop : -50,
+
     }
 });
 

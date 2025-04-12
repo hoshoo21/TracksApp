@@ -61,10 +61,10 @@ const LoginFlow =()=>(
 );
 const Navigation = ()=> {
     const { state } = useContext(AuthContext);
-  
+    console.log(state);
     return (
       <NavigationContainer>
-        {state.isSignedIn ? <TrackFlow /> : <LoginFlow />}
+        {state.token ? <TrackFlow /> : <LoginFlow />}
 
       </NavigationContainer>
     );
