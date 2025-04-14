@@ -4,12 +4,14 @@ import {View,  StyleSheet,
     Platform,
     ScrollView,
     TouchableWithoutFeedback,
+    TouchableOpacity,
     Keyboard } from "react-native";
 import {Text,Input, Button} from 'react-native-elements';
 import Spacer from "./Spacer";
 
 
 const Credentials =(props)=>{
+        
         const [email, setEmail] = useState('');
         const [password, setPassword]= useState('');
         return (
@@ -22,8 +24,11 @@ const Credentials =(props)=>{
                     keyboardShouldPersistTaps="handled"
                     >
                        <Spacer>
-                              <Text h3> Sign Up for Tracker  </Text>
-           
+                                <Text h3> {props.titleText} </Text>:
+                               
+                                  
+                                           
+                             
                      </Spacer>
                         <Input label ="Email"  
                                     value = {email}
@@ -46,10 +51,20 @@ const Credentials =(props)=>{
                     {props.errorMessage ? <Text style={styles.errorMessageContainer}> {props.errorMessage} </Text>: null}
                     
                     <Spacer >
-                        <Button title = "Signup" 
-                            onPress={()=>{props.onSubmit({email:email,password:password});}}
-                        />
-                    </Spacer> 
+                                <Button title = {props.ButtonText}
+                                    onPress={()=>{
+                                        props.onSubmit({email:email,password:password});}}
+                                    />:
+                        
+                    </Spacer>
+                    {   <TouchableOpacity onPress={()=>{
+                         props.onNavigate();
+                       }} >
+                            <Text style={styles.link}> {props.linkText}</Text>
+                            </TouchableOpacity>
+                            
+                  
+                  }
                 </ScrollView>
                 </TouchableWithoutFeedback> 
                      
@@ -67,6 +82,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginBottom:200,
     },
+    link :{
+        color :'blue',
+        alignSelf:'center',
+     
+       }  
+     ,
     errorMessageContainer : {
         fontSize:16,
         color : "red",

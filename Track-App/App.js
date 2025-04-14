@@ -13,6 +13,8 @@ import Account from './src/screens/Account';
 import TrackAdd from './src/screens/TrackAdd';
 import Feather from '@expo/vector-icons/Feather';
 import {Provider as AuthProvider, Context as AuthContext} from './src/context/AuthContext';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -71,6 +73,8 @@ const Navigation = ()=> {
 };
 
 export default function App() {
+   AsyncStorage.removeItem('token');
+          
   return (
     <AuthProvider>
         <Navigation/>

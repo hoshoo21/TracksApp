@@ -32,8 +32,18 @@ const SignUp = (dispatch) => {
 };
 
 const SignIn = (dispatch) => {
-    return ({ email, password }) => {
-        // SignIn logic here
+    return  async ({ email, password }) => {
+        try {
+            console.log(email, password);
+            const resp = await trackerAPI.post("/singin", { email:  email, password: password });
+            await AsyncStorage.setItem('token',resp.data.token);
+            dispatch({type:'signup_success',payload:resp.data.token})
+            console.log(resp); 
+           } catch (error) {
+            dispatch({type:'signup_error', payload : "Email Aldready Exists"});
+            console.log(error.response.data);
+         }            
+  
     };
 };
 
@@ -45,6 +55,6 @@ const SignOut = (dispatch) => {
 
 export const { Provider, Context } = CreateDataContext(
     authReducer, 
-    { SignUp }, 
+    { SignUp,SignIn }, 
     { token: null, errorMessage : '' }
 );
