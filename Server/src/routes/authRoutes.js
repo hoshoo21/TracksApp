@@ -31,6 +31,7 @@ router.post("/signin", async(req,res)=>{
       return res.status(422).send({error:"Email or Password is empty"});
     }
     const user= await User.findOne({email:email});
+    console.log("Found user"+ user);
     if (!user){
       return res.status(404).send({error:"Email Not Found"});
       
@@ -39,6 +40,7 @@ router.post("/signin", async(req,res)=>{
        console.log(req.body);
        await user.comparePassword(password, user.password);
        const token = jwt.sign({userId: user._id}, 'MY_SECRET_KEY');
+      console.log(token);
        res.send({token:token});
     }
     catch(err){

@@ -24,7 +24,7 @@ const Credentials =(props)=>{
                     keyboardShouldPersistTaps="handled"
                     >
                        <Spacer>
-                                <Text h3> {props.titleText} </Text>:
+                                <Text h3> {props.titleText} </Text>
                                
                                   
                                            
@@ -48,23 +48,25 @@ const Credentials =(props)=>{
                     
                     <Spacer/>
                    
-                    {props.errorMessage ? <Text style={styles.errorMessageContainer}> {props.errorMessage} </Text>: null}
+                    {props.errorMessage ? <Text style={styles.errorMessageContainer}> {props.errorMessage} </Text>
+                            : null
+                    }
                     
                     <Spacer >
                                 <Button title = {props.ButtonText}
                                     onPress={()=>{
                                         props.onSubmit({email:email,password:password});}}
-                                    />:
+                                    />
                         
                     </Spacer>
-                    {   <TouchableOpacity onPress={()=>{
-                         props.onNavigate();
-                       }} >
-                            <Text style={styles.link}> {props.linkText}</Text>
-                            </TouchableOpacity>
+                    <TouchableOpacity onPress={()=>{
+                                 props.onNavigate();
+                            }} >
+                        <Text style={styles.link}> {props.linkText}</Text>
+                    </TouchableOpacity>
                             
                   
-                  }
+                  
                 </ScrollView>
                 </TouchableWithoutFeedback> 
                      

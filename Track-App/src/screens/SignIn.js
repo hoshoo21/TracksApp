@@ -1,10 +1,20 @@
-import React, { useContext } from "react";
+import React, { useCallback, useContext } from "react";
 import {View, Text,StyleSheet} from 'react-native';
+import {useNavigation, useFocusEffect} from '@react-navigation/native';
 import Credentials from "./components/Credentials";
 import {Context as AuthContext} from "../context/AuthContext";
 
 const SignIn = (props)=>{
-    const {state, SignIn} = useContext(AuthContext);
+    const navigation = useNavigation();
+    const {state, SignIn, clearErrorMessage} = useContext(AuthContext);
+    useFocusEffect(
+        useCallback(()=>{
+            return ()=>{
+                clearErrorMessage();
+            };
+        },[])
+    );
+
     const hanldeSignIn = (user) => {
         SignIn({ email: user.email, password: user.password});
     }
@@ -13,11 +23,10 @@ const SignIn = (props)=>{
     }
    return (
         <View style ={styles.mainContainer}>
-        
             <Credentials {...props}
              titleText=  "Sing-In to tracker App"
              ButtonText=  "Sign In"
-             linkText = "Doesn't have Account? Sign Up"
+             linkText = "doesn't have account? Sign up"
              onSubmit = {hanldeSignIn}   
              onNavigate= {hanldeNavigation}
              errorMessage = {state.errorMessage} />
