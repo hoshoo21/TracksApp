@@ -31,7 +31,7 @@ const authReducer = (state, action) => {
 const tryLocalSignIn =(dispatch)=>{
     return async()=>{
         const token =  await AsyncStorage.getItem('token');
-        dispatch ({type:"signout_success", payload:token });
+        dispatch ({type:"localsignin_success", payload:token });
     }
 }
 
@@ -76,7 +76,7 @@ const SignIn = (dispatch) => {
 const SignOut = (dispatch) => {
     return  async() => {
           try {
-            await AsyncStorage.removeItemItem('token');
+            await AsyncStorage.removeItem('token');
          
           }
           catch(error){

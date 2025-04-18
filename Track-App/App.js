@@ -3,14 +3,17 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Navigation from './src/Navigation';
 import {Context as AuthContext, Provider as AuthProvider} from './src/context/AuthContext';
-
+import { Context as LocationContext, Provider as LocationProvider } from './src/context/LocationContext';
 
 export default function App() {
           
   return (
-    <AuthProvider>
-       <Navigation/>
-    </AuthProvider>
+    <LocationProvider >
+        <AuthProvider>
+        <Navigation/>
+      </AuthProvider>
+    </LocationProvider>
+    
     
     
   );
