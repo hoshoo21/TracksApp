@@ -44,7 +44,6 @@ export default (startTracking, callBack)=>{
             try {
                 
                 let currentLocation = await Location.getCurrentPositionAsync({});
-                console.log(currentLocation);
                 setLocation(currentLocation);
 
             }
@@ -54,6 +53,7 @@ export default (startTracking, callBack)=>{
     }
 
     useEffect(()=>{
+        console.log("start tracking" + startTracking);
         if (startTracking){       
             startWatching();
         }
@@ -72,6 +72,6 @@ export default (startTracking, callBack)=>{
             }
           };
     },
-    [startTracking]);
+    [startTracking,callBack]);
     return [errMsg];
 }

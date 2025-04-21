@@ -11,6 +11,7 @@ import TrackAdd from './screens/TrackAdd';
 import Feather from '@expo/vector-icons/Feather';
 import {Provider as AuthProvider, Context as AuthContext} from './context/AuthContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import DummyTrack from './screens/components/DummyTrack';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
