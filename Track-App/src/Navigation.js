@@ -46,9 +46,27 @@ tabBarActiveTintColor: 'tomato',
 tabBarInactiveTintColor: 'gray',
 })}
 >
-<Tab.Screen name="TrackListFlow"  component={TrackListFlow} />
-<Tab.Screen name="TrackCreate" component={TrackAdd} />
-<Tab.Screen name="Account" component={Account} />
+<Tab.Screen name="TrackListFlow"  
+            component={TrackListFlow}
+            options={{
+                title: ' Tracks',
+                headerTitleAlign: 'center', // optional: center the title
+              }}
+ />
+<Tab.Screen name="TrackCreate" 
+        component={TrackAdd} 
+        options={{
+            title: ' Create Tack',
+            headerTitleAlign: 'center', 
+          }}
+        />
+<Tab.Screen name="Account"
+             component={Account} 
+             options={{
+                title: 'Use Account', 
+                headerTitleAlign: 'center', 
+              }}
+             />
 
 </Tab.Navigator>
 );

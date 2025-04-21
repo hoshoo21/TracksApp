@@ -34,17 +34,20 @@ const TrackList=(props)=>{
     [isFocused]);
     return (
     <View>
-        <Text> TrackList</Text>
         <FlatList 
             data={state}
             keyExtractor={item => item._id }
             renderItem={({item})=>(
             
-             <ListItem bottomDivider onPress={() => {console.log(item._id)}}>
+             <ListItem bottomDivider onPress={() => {
+                    console.log(item._id);
+                    props.navigation.navigate("TrackDetail", {id : item._id}); 
+                }}>
                  <Icon name="map" type="feather" color="#517fa4" />  
                 <ListItem.Content>
                       <ListItem.Title>{item.name}</ListItem.Title>
                 </ListItem.Content>
+                <ListItem.Chevron />
               </ListItem>
              )}    
         />
