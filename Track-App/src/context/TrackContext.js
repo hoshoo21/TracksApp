@@ -5,9 +5,11 @@ const trackReducer =(state,action)=>{
 
     switch(action.type){
         case "List_Tracks":
-            return state;
+           
+            return action.payload;
         case "Create_Tack":
             return state;
+        
         default:
         return state;
     }
@@ -15,14 +17,13 @@ const trackReducer =(state,action)=>{
 
 const listTracks =(dispatch)=>{
     return async (name, locations)=>{
-        console.log(name);
-        console.log(locations.length);
+        const response= await instance.get('/tracks');
+        dispatch({type:'List_Tracks', payload:response.data});
     }
 }
 const createTrack =(dispatch)=>{
     return async (name, locations)=>{
-        console.log(name);
-        console.log(locations.length);
+        
         instance.post("/tracks", {name, locations});
     }
 }

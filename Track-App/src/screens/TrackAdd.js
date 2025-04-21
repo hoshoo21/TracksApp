@@ -23,7 +23,7 @@ const TrackAdd =(props)=>{
             
             <Text h3> Create a Track </Text>
             <Map/>
-            <TrackForm />
+            <TrackForm  />
         </SafeAreaView>
     );
 }
